@@ -14,7 +14,7 @@ from flask_httpauth import HTTPBasicAuth
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-app.config['MONGO_URI'] = 'mongodb://21090116:21090116@localhost:27017/21090116?authMechanism=DEFAULT&authSource=auth'
+app.config['MONGO_URI'] = 'mongodb://localhost:27017/21090116'
 mongo = PyMongo(app)
 
 app.config["JWT_SECRET_KEY"] = "super-secret"
@@ -44,7 +44,6 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 auth = HTTPBasicAuth()
-
 @auth.verify_password
 def verify_password(email, password):
     try:
